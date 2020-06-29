@@ -10,9 +10,9 @@
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  min-width: 700px;
-  min-height: 500px;
-  border-radius: 5%;
+  /* min-width: 700px; */
+  /* min-height: 500px; */
+  /* border-radius: 5%; */
   margin: auto;
 }
 
@@ -32,6 +32,11 @@ td {
 
 #player {
   padding: 1rem;
+}
+
+#undo {
+  float: right;
+  cursor: pointer;
 }
 
 body {

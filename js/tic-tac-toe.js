@@ -34,6 +34,7 @@ function init() {
   }
 
   document.getElementById('tictactoe').appendChild(board);
+  document.getElementById('undo').addEventListener('click', unsetTurn);
   startNewGame();
 }
 
@@ -70,6 +71,10 @@ function setTurn() {
     turn = turn === 'X' ? 'O' : 'X';
     displayCurrentPlayer();
   }
+}
+
+function unsetTurn() {
+  alert('undo');
 }
 
 function displayFinalMessage(msg) {
