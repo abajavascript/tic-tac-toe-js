@@ -16,7 +16,8 @@ function init() {
   var board = document.createElement('table');
   board.setAttribute('border', 1);
   board.setAttribute('cellspacing', 0);
-  board.style.fontSize = TD_SIZE + 'px';
+  //board.style.fontSize = TD_SIZE + 'px';
+  board.style.fontSize = Math.floor(90 / N_SIZE * 10) / 10 + 'vmin';
   board.id = 'board';
 
   for (var i = 0; i < N_SIZE; i++) {
@@ -24,8 +25,8 @@ function init() {
     board.appendChild(row);
     for (var j = 0; j < N_SIZE; j++) {
       var cell = document.createElement('td');
-      cell.setAttribute('height', TD_SIZE);
-      cell.setAttribute('width', TD_SIZE);
+      //cell.setAttribute('height', TD_SIZE);
+      //cell.setAttribute('width', TD_SIZE);
       cell.classList.add('col' + j, 'row' + i);
       cell.addEventListener('click', setTurn);
       row.appendChild(cell);
