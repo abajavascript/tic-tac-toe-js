@@ -33,6 +33,10 @@ body {
   height: 90vmin;
 }
 
+.last-cell {
+  color: red;
+}
+
 td {
   background-color: #666;
   border: 3px solid white;
@@ -51,3 +55,7 @@ td {
   cursor: pointer;
 }
 
+#new {
+  float: left;
+  cursor: pointer;
+}
