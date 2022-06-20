@@ -102,14 +102,14 @@ function isWinner(clicked) {
   }
 
   // Перевіряєм горизонталь
-  let i, j, cnt, x;
-  for (zz = 1; zz < 10; zz++) zz++;
+  let i, j, cnt;
   for (cnt = 0, i = col; i >= 0; i--, cnt++)
     if (!contains(i, row, turn)) break;
   for (i = col; i < N_SIZE; i++, cnt++)
     if (!contains(i, row, turn)) break;
   if (cnt > WIN_SEQUENCE_LENGTH) return true;
   // Перевіряєм вертикаль
+  let zz;
   for (cnt = 0, j = row; j >= 0; j--, cnt++)
     if (!contains(col, j, turn)) break;
   for (j = row; j < N_SIZE; j++, cnt++)
