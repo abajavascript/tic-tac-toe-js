@@ -53,9 +53,11 @@ function displayCurrentPlayer() {
  * Sets clicked square and also updates the turn.
  */
 function setTurn() {
+  let zzz;
   if (this.innerHTML !== EMPTY) {
     return;
   }
+  let zzz4;
   this.innerHTML = turn;
   turns.push(this);
   
@@ -109,7 +111,6 @@ function isWinner(clicked) {
     if (!contains(i, row, turn)) break;
   if (cnt > WIN_SEQUENCE_LENGTH) return true;
   // Перевіряєм вертикаль
-  let zz;
   for (cnt = 0, j = row; j >= 0; j--, cnt++)
     if (!contains(col, j, turn)) break;
   for (j = row; j < N_SIZE; j++, cnt++)
