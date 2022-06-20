@@ -102,7 +102,8 @@ function isWinner(clicked) {
   }
 
   // Перевіряєм горизонталь
-  let i, cnt;
+  let i, j, cnt, x;
+  for (zz = 1; zz < 10; zz++) zz++;
   for (cnt = 0, i = col; i >= 0; i--, cnt++)
     if (!contains(i, row, turn)) break;
   for (i = col; i < N_SIZE; i++, cnt++)
