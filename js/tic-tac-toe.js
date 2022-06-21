@@ -127,7 +127,7 @@ function isWinner(clicked) {
     let cnt = 0;
     for (let i = _col, j = _row; i >= 0 && j >= 0; i--, j--, cnt++)
       if (!contains(i, j, _turn)) break;
-    for (i = _col, j = _row; i < N_SIZE && j < N_SIZE; i++, j++, cnt++)
+    for (let i = _col, j = _row; i < N_SIZE && j < N_SIZE; i++, j++, cnt++)
       if (!contains(i, j, _turn)) break;
     return cnt;
   }
