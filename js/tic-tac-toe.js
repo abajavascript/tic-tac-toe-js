@@ -10,17 +10,17 @@ let
  * Initializes the Tic Tac Toe board and starts the game.
  */
 function init() {
-  var board = document.createElement('table');
+  let board = document.createElement('table');
   board.setAttribute('border', 1);
   board.setAttribute('cellspacing', 0);
   board.style.fontSize = Math.floor(90 / N_SIZE * 10) / 10 + 'vmin';
   board.id = 'board';
 
-  for (var i = 0; i < N_SIZE; i++) {
-    var row = document.createElement('tr');
+  for (let i = 0; i < N_SIZE; i++) {
+    let row = document.createElement('tr');
     board.appendChild(row);
-    for (var j = 0; j < N_SIZE; j++) {
-      var cell = document.createElement('td');
+    for (let j = 0; j < N_SIZE; j++) {
+      let cell = document.createElement('td');
       cell.classList.add('col' + j, 'row' + i);
       cell.addEventListener('click', setTurn);
       row.appendChild(cell);
@@ -53,11 +53,9 @@ function displayCurrentPlayer() {
  * Sets clicked square and also updates the turn.
  */
 function setTurn() {
-  let zzz;
   if (this.innerHTML !== EMPTY) {
     return;
   }
-  let zzz4;
   this.innerHTML = turn;
   turns.push(this);
   
@@ -144,7 +142,6 @@ function isWinner(clicked) {
     return cnt;
   }
   
-  let i, j, cnt;
   if (getCntInHorizontalLine(col, row, turn) > WIN_SEQUENCE_LENGTH) return true;
   if (getCntInVerticalLine(col, row, turn) > WIN_SEQUENCE_LENGTH) return true;
   if (getCntInDiagonalLine1(col, row, turn) > WIN_SEQUENCE_LENGTH) return true;
