@@ -96,59 +96,57 @@ function isWinner(clicked) {
   let memberOf = clicked.className.split(/\s+/);
   let col = memberOf.find(e => e.search('col') === 0).substring(3);
   let row = memberOf.find(e => e.search('row') === 0).substring(3);
-  
-  //Helper function to check if particular cell belong to same player
-  function contains(_col, _row, _turn) {
-    return document.querySelector('#tictactoe ' + '.col' + _col + '.row' + _row).textContent === _turn;
-  }
-
-  // Функція перевіряє горизонталь і вертає поточну к-сть хрестиків чи ноліків
-  function getCntInHorizontalLine(_col, _row, _turn){
-    let cnt = 0;
-    for (let i = _col; i >= 0; i--, cnt++)
-      if (!contains(i, _row, _turn)) break;
-    for (let i = _col; i < N_SIZE; i++, cnt++)
-      if (!contains(i, _row, _turn)) break;
-    return cnt;
-  }
-  
-  // Функція перевіряє вертикаль і вертає поточну к-сть хрестиків чи ноліків
-  function getCntInVerticalLine(_col, _row, _turn){
-    let cnt = 0;
-    for (let j = _row; j >= 0; j--, cnt++)
-      if (!contains(_col, j, _turn)) break;
-    for (let j = _row; j < N_SIZE; j++, cnt++)
-      if (!contains(_col, j, _turn)) break;
-    return cnt;
-  }
-  
-  // Функція перевіряє першу діагональ і вертає поточну к-сть хрестиків чи ноліків
-  function getCntInDiagonalLine1(_col, _row, _turn){
-    let cnt = 0;
-    for (let i = _col, j = _row; i >= 0 && j >= 0; i--, j--, cnt++)
-      if (!contains(i, j, _turn)) break;
-    for (let i = _col, j = _row; i < N_SIZE && j < N_SIZE; i++, j++, cnt++)
-      if (!contains(i, j, _turn)) break;
-    return cnt;
-  }
-  
-  // Функція перевіряє другу діагональ і вертає поточну к-сть хрестиків чи ноліків
-  function getCntInDiagonalLine2(_col, _row, _turn){
-    let cnt = 0;
-    for (let i = _col, j = _row; i >= 0 && j < N_SIZE; i--, j++, cnt++)
-      if (!contains(i, j, _turn)) break;
-    for (let i = _col, j = _row; i < N_SIZE && j >= 0; i++, j--, cnt++)
-      if (!contains(i, j, _turn)) break;
-    return cnt;
-  }
-  
-  if (getCntInHorizontalLine(col, row, turn) > WIN_SEQUENCE_LENGTH) return true;
-  if (getCntInVerticalLine(col, row, turn) > WIN_SEQUENCE_LENGTH) return true;
-  if (getCntInDiagonalLine1(col, row, turn) > WIN_SEQUENCE_LENGTH) return true;
-  if (getCntInDiagonalLine2(col, row, turn) > WIN_SEQUENCE_LENGTH) return true;
-  return false;
+ 
+  return (getCntInHorizontalLine(col, row, turn) > WIN_SEQUENCE_LENGTH) ||
+         (getCntInVerticalLine(col, row, turn) > WIN_SEQUENCE_LENGTH) ||
+         (getCntInDiagonalLine1(col, row, turn) > WIN_SEQUENCE_LENGTH) ||
+         (getCntInDiagonalLine2(col, row, turn) > WIN_SEQUENCE_LENGTH);
 }
 
+//Helper function to check if particular cell belong to same player
+function contains(_col, _row, _turn) {
+  return document.querySelector('#tictactoe ' + '.col' + _col + '.row' + _row).textContent === _turn;
+}
+
+// Функція перевіряє горизонталь і вертає поточну к-сть хрестиків чи ноліків
+function getCntInHorizontalLine(_col, _row, _turn){
+  let cnt = 0;
+  for (let i = _col; i >= 0; i--, cnt++)
+    if (!contains(i, _row, _turn)) break;
+  for (let i = _col; i < N_SIZE; i++, cnt++)
+    if (!contains(i, _row, _turn)) break;
+  return cnt;
+}
+
+// Функція перевіряє вертикаль і вертає поточну к-сть хрестиків чи ноліків
+function getCntInVerticalLine(_col, _row, _turn){
+  let cnt = 0;
+  for (let j = _row; j >= 0; j--, cnt++)
+    if (!contains(_col, j, _turn)) break;
+  for (let j = _row; j < N_SIZE; j++, cnt++)
+    if (!contains(_col, j, _turn)) break;
+  return cnt;
+}
+
+// Функція перевіряє першу діагональ і вертає поточну к-сть хрестиків чи ноліків
+function getCntInDiagonalLine1(_col, _row, _turn){
+  let cnt = 0;
+  for (let i = _col, j = _row; i >= 0 && j >= 0; i--, j--, cnt++)
+    if (!contains(i, j, _turn)) break;
+  for (let i = _col, j = _row; i < N_SIZE && j < N_SIZE; i++, j++, cnt++)
+    if (!contains(i, j, _turn)) break;
+  return cnt;
+}
+
+// Функція перевіряє другу діагональ і вертає поточну к-сть хрестиків чи ноліків
+function getCntInDiagonalLine2(_col, _row, _turn){
+  let cnt = 0;
+  for (let i = _col, j = _row; i >= 0 && j < N_SIZE; i--, j++, cnt++)
+    if (!contains(i, j, _turn)) break;
+  for (let i = _col, j = _row; i < N_SIZE && j >= 0; i++, j--, cnt++)
+    if (!contains(i, j, _turn)) break;
+  return cnt;
+}
 
 init();
 
