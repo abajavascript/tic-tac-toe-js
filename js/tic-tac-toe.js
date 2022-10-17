@@ -6,6 +6,9 @@ let
   turn = 'X',
   turns = [];
 
+var
+  aaa = 3;
+
 /**
  * Initializes the Tic Tac Toe board and starts the game.
  */
